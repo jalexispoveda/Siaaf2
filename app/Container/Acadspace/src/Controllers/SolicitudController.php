@@ -46,7 +46,7 @@ class SolicitudController extends Controller
      */
     public function store(Request $request)
     {
-
+        return "Aqui refirige";
     }
 
     /**
