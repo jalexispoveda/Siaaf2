@@ -9,7 +9,7 @@
             @include('humtalent.flash-message')
             <div class="row">
                 <div class="col-md-7 col-md-offset-2">
-                    {!! Form::open (['method'=>'POST', 'route'=> ['talento.humano.rrhh.store']]) !!}
+                    {!! Form::open (['method'=>'POST', 'route'=> ['espacios.academicos.espacad.store']]) !!}
 
                     <div class="form-body">
 
