@@ -10,3 +10,17 @@ Route::get('/', [
         return view('acadspace.example');
     }
 ]);
+
+$controller = "\\App\\Container\\Acadspace\\src\\Controllers\\";
+
+
+Route::resource('espacad', $controller.'SolicitudController', [   //ruta para el CRUD de empleados
+    'names' => [ // 'método' => 'alias'
+        'create' => 'espacios.academicos.espacad.create',
+        'store' => 'espacios.academicos.espacad.store',
+        'index' => 'espacios.academicos.espacad.index',
+        'edit' => 'espacios.academicos.espacad.edit',
+        'update' => 'espacios.academicos.espacad.update',
+        'destroy' => 'espacios.academicos.espacad.destroy',
+    ]
+]);
