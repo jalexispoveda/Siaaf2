@@ -46,16 +46,44 @@ class SolicitudController extends Controller
      */
     public function store(Request $request)
     {
+        $cadena='';
+        foreach ($request['SOL_dias'] as $id){
+            $s = '|';
+            if($cadena == ''){
+                $cadena =$id;
+            }else{
+                $cadena .= $s.$id;
+            }
+        }
+        echo $cadena;
 
+
+        //return "Aqui refirige";
         Solicitud::create([
-            'cedula'          => $request['cedula' ],
-            'req_gui'          => $request['SOL_ReqGuia' ],
-            'req_soft'                => $request['SOL_ReqSoft'],
-            'nomb_soft'            => $request['SOL_NombSoft'],
-            'vers_soft'          => $request['SOL_VersSoft'],
+ //           'PK_PRSN_Cedula'          => $request['PK_PRSN_Cedula' ],
+            'SOL_guia_practica'    => $request['SOL_ReqGuia'],
+            'SOL_software'         => $request['SOL_ReqSoft'],
+            'SOL_grupo'            => $request['SOL_grupo'],
+            'SOL_cant_estudiantes' => $request['SOL_cant_estudiantes'],
+            'SOL_dias'             => $cadena,
+            'SOL_hora_inicio'      => $request['SOL_hora_inicio'],
+            'SOL_hora_fin'         => $request['SOL_hora_fin'],
+            'SOL_estado'           => 0,
+            'SOL_fechas'           => $request['SOL_list'],
+            'SOL_nucleo_tematico'  => $request['SOL_nucleo_tematico']
         ]);
-        return back()->with('success','El empleado fue registrado correctamente');
+        return back()->with('success','Solicitud registrada correctamente');
 
+    }
+
+    public function listarSolicitud()
+    {
+        $solicitudes = Solicitud::all();
+        $solicitudes = Solicitud::paginate(10);
+       // return view('usuario.mostrarUsuario', compact('usuarios'));
+       /* $estado=0;
+        $sol = Solicitud::where('SOL_estado',$estado)->get();*/
+        return view('acadspace.mostrarSolicitudes', compact('solicitudes'));
     }
 
     /**
@@ -79,6 +107,12 @@ class SolicitudController extends Controller
     public function edit($id)
     {
 
+            $empleado = Solicitud::find($id);
+            $empleado->SOL_estado = 1;
+            $empleado->save();
+            return back()->with('success','La solicitud fue aprobada correctamente');
+
+        //return view('humtalent.empleado.editarEmpleado', compact('empleado'));
     }
 
     /**
@@ -88,9 +122,13 @@ class SolicitudController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id)
     {
-
+        $empleado = Solicitud::find($id);
+        $empleado->SOL_estado = 2;
+        $empleado->save();
+        return back()->with('success','La solicitud fue rechazada correctamente');
+        //return view('humtalent.empleado.editarEmpleado', compact('empleado'));
     }
 
     /**

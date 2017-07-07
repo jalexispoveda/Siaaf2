@@ -36,3 +36,7 @@ Route::resource('est', $controller.'EstudiantesController', [   //ruta para el C
     ]
 ]);
 
+Route::get('/solicitudesLista', [    //ruta para listar los docentes registrados.
+    'as' => 'espacios.academicos.mostrarSolicitudes', //Este es el alias de la ruta
+    'uses' => $controller.'SolicitudController@listarSolicitud'
+]);
