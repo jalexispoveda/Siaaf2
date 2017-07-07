@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Container\Users\Src\Interfaces\UserInterface;
 use App\Container\Acadspace\src\Estudiantes;
+use App\Container\Acadspace\src\Solicitud;
 use Illuminate\Support\Facades\DB;
 
 class EstudiantesController extends Controller
@@ -75,7 +76,10 @@ class EstudiantesController extends Controller
      */
     public function edit($id)
     {
-
+        $empleado = Solicitud::find($id);
+        $empleado->SOL_estado = 2;
+        $empleado->save();
+        return back()->with('success','La solicitud fue rechazada correctamente');
     }
 
     /**

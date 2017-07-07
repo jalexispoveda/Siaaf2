@@ -25,6 +25,17 @@ Route::resource('espacad', $controller.'SolicitudController', [   //ruta para el
     ]
 ]);
 
+Route::resource('est', $controller.'EstudiantesController', [   //ruta para el CRUD de empleados
+    'names' => [ // 'método' => 'alias'
+        'create' => 'espacios.academicos.est.create',
+        'store' => 'espacios.academicos.est.store',
+        'index' => 'espacios.academicos.est.index',
+        'edit' => 'espacios.academicos.est.edit',
+        'update' => 'espacios.academicos.est.update',
+        'destroy' => 'espacios.academicos.est.destroy',
+    ]
+]);
+
 Route::get('/solicitudesLista', [    //ruta para listar los docentes registrados.
     'as' => 'espacios.academicos.mostrarSolicitudes', //Este es el alias de la ruta
     'uses' => $controller.'SolicitudController@listarSolicitud'

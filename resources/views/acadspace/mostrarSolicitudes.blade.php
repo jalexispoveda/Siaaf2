@@ -32,8 +32,8 @@
                         <td>{{$solicitud->SOL_guia_practica}}</td>
                         <td>{!! link_to_route('espacios.academicos.espacad.edit',$title='Aceptar', $parameters=$solicitud->PK_SOL_id_solicitud,
                             $atributes=  ['class' => 'btn blue']) !!}
-                            {!! link_to_route('talento.humano.rrhh.edit',$title='Rechazar', $parameters=$solicitud->PK_SOL_id_solicitud,
-                            $atributes=  ['class' => 'btn btn-danger']) !!}
+                            {!! link_to_route('espacios.academicos.est.edit',$title='Rechazar', $parameters=$solicitud->PK_SOL_id_solicitud,
+                            $atributes=  ['class' => 'btn red']) !!}
                         </td>
                         </tbody>
                         @endif

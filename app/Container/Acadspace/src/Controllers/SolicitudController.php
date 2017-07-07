@@ -106,10 +106,12 @@ class SolicitudController extends Controller
      */
     public function edit($id)
     {
-        $empleado = Solicitud::find($id);
-        $empleado->SOL_estado = 1;
-        $empleado->save();
-        return back()->with('success','La solicitud fue aprobada correctamente');
+
+            $empleado = Solicitud::find($id);
+            $empleado->SOL_estado = 1;
+            $empleado->save();
+            return back()->with('success','La solicitud fue aprobada correctamente');
+
         //return view('humtalent.empleado.editarEmpleado', compact('empleado'));
     }
 
@@ -120,14 +122,13 @@ class SolicitudController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id)
     {
-        $empleado= Solicitud::find($id);
-        //$empleado->fill($request->all());
-        //$empleado-> PRSN_Rol = $request['PRSN_Rol'];
-        $empleado->SOL_estado = 1;
+        $empleado = Solicitud::find($id);
+        $empleado->SOL_estado = 2;
         $empleado->save();
-        return back()->with('success','La solicitud fue aprobada correctamente');
+        return back()->with('success','La solicitud fue rechazada correctamente');
+        //return view('humtalent.empleado.editarEmpleado', compact('empleado'));
     }
 
     /**
