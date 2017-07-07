@@ -46,21 +46,31 @@ class SolicitudController extends Controller
      */
     public function store(Request $request)
     {
+        $cadena='';
+        foreach ($request['SOL_dias'] as $id){
+            $s = '|';
+            if($cadena == ''){
+                $cadena =$id;
+            }else{
+                $cadena .= $s.$id;
+            }
+        }
+        echo $cadena;
+
+
         //return "Aqui refirige";
         Solicitud::create([
  //           'PK_PRSN_Cedula'          => $request['PK_PRSN_Cedula' ],
-            'SOL_guia_practica'       => $request['SOL_ReqGuia'],
-            'SOL_software'            => $request['SOL_ReqSoft']
-            'S'          => $request['PRSN_Apellidos'],
-            'PRSN_Telefono'           => $request['PRSN_Telefono'],
-            'PRSN_Correo'             => $request['PRSN_Correo'],
-            'PRSN_Direccion'          => $request['PRSN_Direccion'],
-            'PRSN_Ciudad'             => $request['PRSN_Ciudad'],
-            'PRSN_Eps'                => $request['PRSN_Eps'],
-            'PRSN_Fpensiones'         => $request['PRSN_Fpensiones'],
-            'PRSN_Area'               => $request['PRSN_Area'],
-            'PRSN_Caja_Compensacion'  => $request['PRSN_Caja_Compensacion'],
-            'PRSN_Estado_Persona'     => $request['PRSN_Estado_Persona']
+            'SOL_guia_practica'    => $request['SOL_ReqGuia'],
+            'SOL_software'         => $request['SOL_ReqSoft'],
+            'SOL_grupo'            => $request['SOL_grupo'],
+            'SOL_cant_estudiantes' => $request['SOL_cant_estudiantes'],
+            'SOL_dias'             => $cadena,
+            'SOL_hora_inicio'      => $request['SOL_hora_inicio'],
+            'SOL_hora_fin'         => $request['SOL_hora_fin'],
+            'SOL_estado'           => 0,
+            'SOL_fechas'           => $request['SOL_list'],
+            'SOL_nucleo_tematico'  => $request['SOL_nucleo_tematico']
         ]);
         return back()->with('success','Solicitud registrada correctamente');
 

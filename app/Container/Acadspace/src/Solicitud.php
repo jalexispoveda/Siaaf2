@@ -13,7 +13,16 @@ class Solicitud extends Model
     protected $primaryKey = 'PK_SOL_id_solicitud';
 
     protected $fillable = [
-        'SOL_guia_practica','SOL_software',
+        'SOL_guia_practica',
+        'SOL_software',
+        'SOL_grupo',
+        'SOL_cant_estudiantes',
+        'SOL_dias',
+        'SOL_hora_inicio',
+        'SOL_hora_fin',
+        'SOL_estado',
+      //  'SOL_fechas',
+        'SOL_nucleo_tematico'
     ];
 
 

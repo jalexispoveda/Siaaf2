@@ -24,7 +24,7 @@
                     {!! Form::open (['method'=>'POST', 'route'=> ['espacios.academicos.espacad.store']]) !!}
 
                     <div class="form-body">
-
+                        
                         {!! Field::radios('SOL_ReqGuia',['Si'=>'Si', 'No'=>'No'], ['list', 'label'=>'Requiere guia de practica', 'icon'=>'fa fa-user']) !!}
 
                         {!! Field::text('SOL_nucleo_tematico',null,['label'=>'Nucleo tematico:', 'class'=> 'form-control', 'autofocus', 'maxlength'=>'40','autocomplete'=>'off'],
@@ -48,7 +48,7 @@
 
                         {!! Field::checkboxes('SOL_dias',
                         ['lun' => 'Lunes', 'mar' => 'Martes', 'mie' => 'Miercoles', 'jue' => 'Jueves', 'vie' => 'Viernes','sab' => 'Sabado'],
-                        ['label' => 'Dias de la semana', 'list', 'label' => 'Seleccione los dias', 'icon'=>'fa fa-user']) !!}
+                        ['label' => 'Dias de la semana', 'inline', 'label' => 'Seleccione los dias', 'icon'=>'fa fa-user']) !!}
 
                         {!! Field::text(
                         'SOL_hora_inicio',
@@ -60,8 +60,6 @@
                         ['label' => 'Hora de fin', 'class' => 'timepicker timepicker-no-seconds', 'data-date-format' => "yyyy-mm-dd", 'data-date-start-date' => "+0d", 'required', 'auto' => 'off'],
                         ['help' => 'Selecciona la hora.', 'icon' => 'fa fa-clock-o']) !!}
 
-                        {!! Field::text('SOL_fechas',null,['label'=>'Fechas:', 'class'=> 'form-control', 'autofocus', 'maxlength'=>'40','autocomplete'=>'off'],
-                                                         ['help' => 'Digite las fechas separadas por comas.','icon'=>'fa fa-building-o'] ) !!}
 
 
 
