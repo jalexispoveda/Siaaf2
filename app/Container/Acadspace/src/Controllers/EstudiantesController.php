@@ -11,10 +11,10 @@ namespace App\Container\Acadspace\src\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Container\Users\Src\Interfaces\UserInterface;
-use App\Container\Acadspace\src\Solicitud;
+use App\Container\Acadspace\src\Estudiantes;
 use Illuminate\Support\Facades\DB;
 
-class SolicitudController extends Controller
+class EstudiantesController extends Controller
 {
 
 
@@ -25,7 +25,7 @@ class SolicitudController extends Controller
      */
     public function index()
     {
-        return "Estoy en Index";
+        return view('acadspace.controlEstudiante');
     }
 
     /**
@@ -47,14 +47,11 @@ class SolicitudController extends Controller
     public function store(Request $request)
     {
 
-        Solicitud::create([
-            'cedula'          => $request['cedula' ],
-            'req_gui'          => $request['SOL_ReqGuia' ],
-            'req_soft'                => $request['SOL_ReqSoft'],
-            'nomb_soft'            => $request['SOL_NombSoft'],
-            'vers_soft'          => $request['SOL_VersSoft'],
+        Estudiantes::create([
+            'codigo'          => $request['codigo' ],
+            'nombre'          => $request['nombre' ],
         ]);
-        return back()->with('success','El empleado fue registrado correctamente');
+        return back()->with('success','El estudiante fue registrado correctamente');
 
     }
 

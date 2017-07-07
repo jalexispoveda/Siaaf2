@@ -9,25 +9,17 @@
             @include('humtalent.flash-message')
             <div class="row">
                 <div class="col-md-7 col-md-offset-2">
-                    {!! Form::open (['method'=>'POST', 'route'=> ['espacios.academicos.espacad.store']]) !!}
+                    {!! Form::open (['method'=>'POST', 'route'=> ['espacios.academicos.est.store']]) !!}
 
                     <div class="form-body">
 
-                        {!! Field:: text('cedula',null,['label'=>'Cedula:', 'class'=> 'form-control', 'autofocus', 'maxlength'=>'40','autocomplete'=>'off'],
-                                                         ['help' => 'Digita la cedula','icon'=>'fa fa-user'] ) !!}
+                        {!! Field:: text('codigo',null,['label'=>'Codigo:', 'class'=> 'form-control', 'autofocus', 'maxlength'=>'40','autocomplete'=>'off'],
+                                                         ['help' => 'Digita el codigo','icon'=>'fa fa-desktop'] ) !!}
 
 
-                        {!! Field::radios('SOL_ReqGuia',['Si'=>'Si', 'No'=>'No'], ['list', 'label'=>'Requiere guia de practica', 'icon'=>'fa fa-user']) !!}
+                        {!! Field:: text('nombre',null,['label'=>'Nombre estudiante','class'=> 'form-control', 'autofocus', 'maxlength'=>'40','autocomplete'=>'off'],
+                                                         ['help' => 'Digita tu nombre.','icon'=>'fa fa-user']) !!}
 
-
-                        {!! Field::radios('SOL_ReqSoft',['Si'=>'Si', 'No'=>'No'], ['list', 'label'=>'Requiere software', 'icon'=>'fa fa-user']) !!}
-
-
-                        {!! Field:: text('SOL_NombSoft',null,['label'=>'Nombre Software','class'=> 'form-control', 'autofocus', 'maxlength'=>'40','autocomplete'=>'off'],
-                                                         ['help' => 'Digita el nombre del software.','icon'=>'fa fa-desktop']) !!}
-
-                        {!! Field:: text('SOL_VersSoft',null,['label'=>'Version Software:', 'class'=> 'form-control', 'autofocus', 'maxlength'=>'40','autocomplete'=>'off'],
-                                                         ['help' => 'Digita la version del software','icon'=>'fa fa-user'] ) !!}
 
                         <div class="form-actions">
                             <div class="row">
