@@ -11,7 +11,7 @@ namespace App\Container\Acadspace\src\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Container\Users\Src\Interfaces\UserInterface;
-use App\Container\Humtalent\src\Persona;
+use App\Container\Acadspace\src\Solicitud;
 use Illuminate\Support\Facades\DB;
 
 class SolicitudController extends Controller
@@ -46,12 +46,12 @@ class SolicitudController extends Controller
      */
     public function store(Request $request)
     {
-        return "Aqui refirige";
-        Persona::create([
-            'PK_PRSN_Cedula'          => $request['PK_PRSN_Cedula' ],
-            'PRSN_Rol'                => $request['PRSN_Rol'],
-            'PRSN_Nombres'            => $request['PRSN_Nombres'],
-            'PRSN_Apellidos'          => $request['PRSN_Apellidos'],
+        //return "Aqui refirige";
+        Solicitud::create([
+ //           'PK_PRSN_Cedula'          => $request['PK_PRSN_Cedula' ],
+            'SOL_guia_practica'       => $request['SOL_ReqGuia'],
+            'SOL_software'            => $request['SOL_ReqSoft']
+            'S'          => $request['PRSN_Apellidos'],
             'PRSN_Telefono'           => $request['PRSN_Telefono'],
             'PRSN_Correo'             => $request['PRSN_Correo'],
             'PRSN_Direccion'          => $request['PRSN_Direccion'],
@@ -60,9 +60,9 @@ class SolicitudController extends Controller
             'PRSN_Fpensiones'         => $request['PRSN_Fpensiones'],
             'PRSN_Area'               => $request['PRSN_Area'],
             'PRSN_Caja_Compensacion'  => $request['PRSN_Caja_Compensacion'],
-            'PRSN_Estado_Persona'     => $request['PRSN_Estado_Persona'],
+            'PRSN_Estado_Persona'     => $request['PRSN_Estado_Persona']
         ]);
-        return back()->with('success','El empleado fue registrado correctamente');
+        return back()->with('success','Solicitud registrada correctamente');
 
     }
 
