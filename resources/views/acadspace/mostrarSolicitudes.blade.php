@@ -1,59 +1,47 @@
 @extends('material.layouts.dashboard')
 
-@section('page-title', 'Registro de solicitud:')
+@section('page-title', 'Solicitudes sin revisar:')
 
 @section('content')
-<div class="container">
-    <a href="{{ url('/usuario/crearUsuario') }}" class="btn btn-primary">Registrar nuevo usuario</a>
-    <table class="table table-striped table-bordered">
-        <caption><b>Usuarios</b></caption>
-        <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Correo</th>
-            <th>Rol</th>
-            <th>Accion</th>
-        </tr>
-        @foreach($usuarios as $usuario)
-        <tr>
-            <td>{{ $usuario->id_usuario }}</td>
-            <td>{{ $usuario->nombres }}</td>
-            <td>{{ $usuario->primerapellido }}</td>
-            <td>{{ $usuario->correo }}</td>
-            <td>
-                @if($usuario->id_rol==1)
-                <span class="label label-danger">Administrador</span>
-                @elseif($usuario->id_rol==2)
-                <span class="label label-primary">Apoyo academico</span>
-                @elseif($usuario->id_rol==3)
-                <span class="label label-success">Docente</span>
-                @elseif($usuario->id_rol==4)
-                <span class="label label-warning">Secretaria</span>
-                @endif
-            </td>
-            <td>
-                <a href="" class="btn btn-warning">
-                    <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
-                </a>
-                <a href="{{ route('usuario.eliminarUsuario', $usuario->id_usuario) }}" class="btn btn-danger" onclick="return confirm('¿Desea eliminar a este usuario?')">
-                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                </a>
-            </td>
-        </tr>
-        @endforeach
-    </table>
-    {!! $usuarios->render() !!}
+<div class="col-md-12">
+    <div class="portlet portlet-sortable light bordered portlet-form">
+        <div class="portlet-title">
+            <div class="caption font-green">
+                <i class=" icon-book-open font-green"></i>
+                <span class="caption-subject bold uppercase"> Solicitudes</span>
+            </div>
+            <div class="actions">
+                <a class="btn btn-circle btn-icon-only btn-default fullscreen" href="javascript:;"></a>
+            </div>
+        </div>
+        <div class="portlet-body">
+            <div class="clearfix"> </div><br><br><br>
+            <div class="row">
+                <div class="col-md-12">
+
+                    <table class="table table-striped table-bordered table-hover dt-responsive" width="100%" id="example-table-ajax">
+                        <thead>
+                        <th>Nucleo</th>
+                        <th>Guia</th>
+                        <th>Acción</th>
+                        </thead>
+                        @foreach($solicitudes as $solicitud)
+                        <tbody>
+                        @if($solicitud->SOL_estado==0)
+                        <td>{{$solicitud->SOL_nucleo_tematico}}</td>
+                        <td>{{$solicitud->SOL_guia_practica}}</td>
+                        <td>{!! link_to_route('espacios.academicos.espacad.edit',$title='Aceptar', $parameters=$solicitud->PK_SOL_id_solicitud,
+                            $atributes=  ['class' => 'btn blue']) !!}
+                            {!! link_to_route('talento.humano.rrhh.edit',$title='Rechazar', $parameters=$solicitud->PK_SOL_id_solicitud,
+                            $atributes=  ['class' => 'btn btn-danger']) !!}
+                        </td>
+                        </tbody>
+                        @endif
+                        @endforeach
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection
-@push('styles')
-<link href="{{ asset('assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css') }}" rel="stylesheet" type="text/css" />
-@endpush
-@push('plugins')
-<script src="{{ asset('assets/global/plugins/moment.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js') }}" type="text/javascript"></scripts>
-    <script src="{{ asset('assets/global/plugins/jquery-validation/js/jquery.validate.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('assets/global/plugins/jquery-validation/js/additional-methods.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('assets/global/plugins/jquery-validation/js/localization/messages_es.js') }}" type="text/javascript"></script>
-<script src="{{ asset('assets/global/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js') }}" type="text/javascript"></script>
-@endpush

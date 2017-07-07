@@ -76,6 +76,16 @@ class SolicitudController extends Controller
 
     }
 
+    public function listarSolicitud()
+    {
+        $solicitudes = Solicitud::all();
+        $solicitudes = Solicitud::paginate(10);
+       // return view('usuario.mostrarUsuario', compact('usuarios'));
+       /* $estado=0;
+        $sol = Solicitud::where('SOL_estado',$estado)->get();*/
+        return view('acadspace.mostrarSolicitudes', compact('solicitudes'));
+    }
+
     /**
      * Display the specified resource.
      *
@@ -96,7 +106,11 @@ class SolicitudController extends Controller
      */
     public function edit($id)
     {
-
+        $empleado = Solicitud::find($id);
+        $empleado->SOL_estado = 1;
+        $empleado->save();
+        return back()->with('success','La solicitud fue aprobada correctamente');
+        //return view('humtalent.empleado.editarEmpleado', compact('empleado'));
     }
 
     /**
@@ -108,7 +122,12 @@ class SolicitudController extends Controller
      */
     public function update(Request $request, $id)
     {
-
+        $empleado= Solicitud::find($id);
+        //$empleado->fill($request->all());
+        //$empleado-> PRSN_Rol = $request['PRSN_Rol'];
+        $empleado->SOL_estado = 1;
+        $empleado->save();
+        return back()->with('success','La solicitud fue aprobada correctamente');
     }
 
     /**
