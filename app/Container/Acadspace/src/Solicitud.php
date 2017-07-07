@@ -8,13 +8,21 @@ class Solicitud extends Model
 {
     protected $connection = 'acadspace';
 
-    protected $table = 'prueba';
+    protected $table = 'TBL_solicitud';
 
-    protected $primaryKey = 'cedula';
+    protected $primaryKey = 'PK_SOL_id_solicitud';
 
     protected $fillable = [
-
-        'cedula','req_gui','req_soft','nomb_soft','vers_soft',
+        'SOL_guia_practica',
+        'SOL_software',
+        'SOL_grupo',
+        'SOL_cant_estudiantes',
+        'SOL_dias',
+        'SOL_hora_inicio',
+        'SOL_hora_fin',
+        'SOL_estado',
+      //  'SOL_fechas',
+        'SOL_nucleo_tematico'
     ];
 
 
