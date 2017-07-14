@@ -24,7 +24,7 @@ class solFormatAcad extends Model
 
     public function setPathAttribute($path){
         $nombre_doc = Carbon::now()->second.$path->getClientOriginalName();
-        $this->attributes['path'] = $nombre_doc;
+        $this->attributes['nombre_doc'] = $nombre_doc;
         \Storage::disk('local')->put($nombre_doc, \File::get($path));
     }
 

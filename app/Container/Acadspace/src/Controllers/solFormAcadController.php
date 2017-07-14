@@ -68,7 +68,7 @@ class solFormAcadController extends Controller
                 'titulo_doc' => $request['txt_nombre'],
                 'descripcion_doc' => $request['txt_descripcion'],
                 'nombre_doc' => $request['path'],
-                'id_secretaria' => 5,
+                'id_secretaria' => 1,
                 'estado' => 0
             ]);
 
