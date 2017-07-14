@@ -36,7 +36,24 @@ Route::resource('est', $controller.'EstudiantesController', [   //ruta para el C
     ]
 ]);
 
+Route::resource('formacad', $controller.'solFormAcadController', [   //ruta para el CRUD de empleados
+    'names' => [ // 'método' => 'alias'
+        'create' => 'espacios.academicos.formacad.create',
+        'store' => 'espacios.academicos.formacad.store',
+        'index' => 'espacios.academicos.formacad.index',
+        'show' => 'espacios.academicos.formacad.show',
+        'edit' => 'espacios.academicos.formacad.edit',
+        'update' => 'espacios.academicos.formacad.update',
+        'destroy' => 'espacios.academicos.formacad.destroy',
+    ]
+]);
+
 Route::get('/solicitudesLista', [    //ruta para listar los docentes registrados.
     'as' => 'espacios.academicos.mostrarSolicitudes', //Este es el alias de la ruta
     'uses' => $controller.'SolicitudController@listarSolicitud'
+]);
+
+Route::get('/descargarArchivo/{id}', [
+    'as' => 'espacios.academicos.descargarArchivo',
+    'uses' => $controller.'solFormAcadController@descargar_publicacion'
 ]);

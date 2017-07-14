@@ -13,11 +13,11 @@
 
                     <div class="form-body">
 
-                        {!! Field:: text('codigo',null,['label'=>'Codigo:', 'class'=> 'form-control', 'autofocus', 'maxlength'=>'40','autocomplete'=>'off'],
+                        {!! Field:: text('txt_codigo',null,['label'=>'Codigo:', 'class'=> 'form-control', 'autofocus', 'maxlength'=>'40','autocomplete'=>'off'],
                                                          ['help' => 'Digita el codigo','icon'=>'fa fa-desktop'] ) !!}
 
 
-                        {!! Field:: text('nombre',null,['label'=>'Nombre estudiante','class'=> 'form-control', 'autofocus', 'maxlength'=>'40','autocomplete'=>'off'],
+                        {!! Field:: text('txt_nombre',null,['label'=>'Nombre estudiante','class'=> 'form-control', 'autofocus', 'maxlength'=>'40','autocomplete'=>'off'],
                                                          ['help' => 'Digita tu nombre.','icon'=>'fa fa-user']) !!}
 
 
@@ -62,22 +62,22 @@
                 focusInvalid: true,
                 ignore: "",
                 rules: {
-                    SOL_ReqGuia: {
+                    txt_codigo: {
                         required: true
                     },
-                    SOL_ReqSoft: {
+                    txt_nombre: {
                         required: true
                     }
 
                 },
                 messages:{
-                    SOL_ReqGuia: {
-                        required: 'Por favor marca una opción',
-                        minlength: jQuery.validator.format("Al menos {0} items deben ser seleccionados"),
+                    txt_codigo: {
+                        required: 'Por favor digita tu codigo',
+                        minlength: jQuery.validator.format("Digitar codigo"),
                     },
-                    SOL_ReqSoft: {
-                        required: 'Por favor marca una opción',
-                        minlength: jQuery.validator.format("Al menos {0} items deben ser seleccionados"),
+                    txt_nombre: {
+                        required: 'Por favor digita tu nombre',
+                        minlength: jQuery.validator.format("Digitar nombre"),
                     },
 
 

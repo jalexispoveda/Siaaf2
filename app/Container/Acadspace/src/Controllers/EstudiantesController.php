@@ -49,8 +49,8 @@ class EstudiantesController extends Controller
     {
 
         Estudiantes::create([
-            'codigo'          => $request['codigo' ],
-            'nombre'          => $request['nombre' ],
+            'codigo'          => $request['txt_codigo' ],
+            'nombre'          => $request['txt_nombre' ],
         ]);
         return back()->with('success','El estudiante fue registrado correctamente');
 
