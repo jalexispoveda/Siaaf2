@@ -2,6 +2,16 @@
 
 @section('page-title', 'Registro de solicitud:')
 
+<script type="text/javascript">
+    function capturar() {
+        codigo = document.getElementById("txt_codigo");
+
+            element.style.display='none';
+            document.getElementById('codigo').removeAttribute('required', 'required');
+
+    }
+</script>
+
 @section('content')
     <div class="col-md-12">
         @component('themes.bootstrap.elements.portlets.portlet', ['icon' => 'icon-book-open', 'title' => 'Formulario de registro de solicitud'])
