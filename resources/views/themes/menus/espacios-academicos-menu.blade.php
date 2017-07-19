@@ -8,28 +8,7 @@
     </a>
 
     <ul class="sub-menu">
-
-        <li class="nav-item">
-            <a href="javascript:;" class="nav-link nav-toggle">
-                <i class="fa fa-book"></i>
-                <span class="title">Apoyo Academico</span>
-                <span class="arrow"></span>
-            </a>
-            <ul class="sub-menu">
-                <li class="nav-item {{ active(['talento.humano.document.create'], 'start active open') }}">
-                    <a href="{{ route('talento.humano.document.create') }}" class="nav-link nav-toggle">
-                        <i class="fa fa-book"></i>
-                        <span class="title">Registrar Usuario</span>
-                    </a>
-                </li>
-                <li class="nav-item {{ active(['talento.humano.document.index'], 'start active open') }}">
-                    <a href="{{ route('talento.humano.document.index') }}" class="nav-link nav-toggle">
-                        <i class="fa fa-book"></i>
-                        <span class="title">Consultar Usuarios</span>
-                    </a>
-                </li>
-            </ul>
-        </li>
+        
 
         <li class="nav-item">
             <a href="javascript:;" class="nav-link nav-toggle">
